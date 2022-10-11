@@ -6,6 +6,14 @@
 #include <GL/glew.h>
 #include <string.h>
 
+void guiInit::setBufferMouseStatus(std::string mouseStatus) {
+	bufferMouseStatus = mouseStatus;
+}
+
+std::string guiInit::getBufferMouseStatus() {
+	return bufferMouseStatus;
+}
+
 void menuBar::menubarRender() {
 	ImGui::SetNextWindowPos(ImVec2((float)xBar, (float)yBar));
 	ImGui::SetNextWindowSize(ImVec2((float)widthBar, (float)heightBar));
@@ -16,7 +24,7 @@ void menuBar::menubarRender() {
 		if (ImGui::BeginMenu("File"))
 		{
 			if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
-			if (ImGui::MenuItem("Save", "Ctrl+S")) { /* Do stuff */ }
+			if (ImGui::MenuItem("Save", "Ctrl+S")) { my_tool_activate = true; }
 			if (ImGui::MenuItem("Close", "Ctrl+W")) { my_tool_activate = false; }
 			ImGui::EndMenu();
 		}
@@ -49,13 +57,14 @@ void resourceWindow::resourceWindowRender(int width, int height, int posy) {
 	ImGui::SetNextWindowSize(ImVec2((float)width, (float)height));
 	ImGui::Begin("resource");
 	ImGui::Button("Hello!");
-	if (ImGui::ImageButton(icon, ImVec2(sizeIconResource, sizeIconResource), ImVec2(0, 0), ImVec2(32.0f, 32.0f), 2, ImColor(0, 0, 0, 255))) {
-		ImGui::ImageButton(icon, ImVec2(sizeIconResource, sizeIconResource), ImVec2(0, 0), ImVec2(32.0f, 32.0f), 2, ImColor(0, 0, 0, 255));
+	if (ImGui::ImageButton(icon, ImVec2(sizeIconResource, sizeIconResource), ImVec2(0, 0), ImVec2(32.0f, 32.0f), 2, ImColor(43, 74, 92, 255))) {
+		ImGui::ImageButton(icon, ImVec2(sizeIconResource, sizeIconResource), ImVec2(0, 0), ImVec2(32.0f, 32.0f), 2, ImColor(21, 14, 54, 255));
+		setBufferMouseStatus("clickedImageButton");
 	}
 	ImGui::SameLine();
 	ImGui::ImageButton(icon, ImVec2(sizeIconResource, sizeIconResource), ImVec2(0, 0), ImVec2(32.0f, 32.0f), 2, ImColor(0, 0, 0, 255));
 	ImGui::SameLine();
-	ImGui::ImageButton(icon, ImVec2(sizeIconResource, sizeIconResource), ImVec2(0, 0), ImVec2(32.0f, 32.0f), 2, ImColor(0, 0, 0, 255));
+	ImGui::ImageButton(icon, ImVec2(sizeIconResource, sizeIconResource), ImVec2(0, 0), ImVec2(32.0f, 32.0f), 2, ImColor(12, 72, 91, 255));
 	ImGui::End();
 }
 

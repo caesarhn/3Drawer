@@ -8,6 +8,8 @@ private:
 	bool cameraCanMove = false;
 	bool cameraMoveForward = false;
 	bool cameraMoveBackward = false;
+	bool cameraMoveRight = false;
+	bool cameraMoveLeft = false;
 
 	// variable as parameter
 	double x = 0, y = 0;
@@ -53,6 +55,8 @@ public:
 	void setCameraCanMove(bool value);
 	void setCameraMoveForward(bool value);
 	void setCameraMoveBackward(bool value);
+	void setCameraMoveRight(bool value);
+	void setCameraMoveLeft(bool value);
 	void setCameraPos(float cameraPosX, float cameraPosY, float cameraPosZ,
 						float cammeraLookX, float cameraLookY, float cameraLookZ);
 	void rotationz(float angle);

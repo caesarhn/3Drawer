@@ -1,6 +1,15 @@
 #pragma once
 #include <GL/glew.h>
+#include <iostream>
 #include <string.h>
+
+class guiInit {
+public:
+	std::string bufferMouseStatus;
+
+	void setBufferMouseStatus(std::string mouseStatus);
+	std::string getBufferMouseStatus();
+};
 
 class menuBar {
 private:
@@ -17,10 +26,10 @@ public:
 
 };
 
-class resourceWindow {
+class resourceWindow : public guiInit {
 private:
-	float positionx = 0.0f;
-	float positiony = 0.0f;
+	int positionx = 0;
+	int positiony = 0;
 	float widthBar = 1920.0f;
 	float heightBar = 200.0f;
 

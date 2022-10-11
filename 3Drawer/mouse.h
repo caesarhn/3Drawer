@@ -8,5 +8,6 @@ private:
 	std::string mosStatus;
 
 public:
-
+	void setMouseStatus(std::string setStatus);
+	std::string getMouseStatus();
 };

@@ -23,6 +23,7 @@
 #include "camera.h"
 #include "transform.h"
 #include "gui.h"
+#include "mouse.h"
 
 // window size
 int width = 1440;
@@ -151,6 +152,7 @@ int main_c()
     objectBase obj;
     menuBar gui;
     resourceWindow reswin;
+    mouseStatus mouseHandler;
 
     kub.make();
     obj.allInit();
@@ -176,6 +178,9 @@ int main_c()
         right_window_width = width / 5;
         bottom_window_height = height / 5;
         bottom_window_width = width;
+
+        //mouse chek
+        std::cout << reswin.getBufferMouseStatus() << std::endl;
 
         glfwGetWindowSize(window, &width, &height);
 
@@ -234,6 +239,8 @@ int main_c()
         mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
         key_w = glfwGetKey(window, GLFW_KEY_W);
         key_s = glfwGetKey(window, GLFW_KEY_S);
+        key_a = glfwGetKey(window, GLFW_KEY_A);
+        key_d = glfwGetKey(window, GLFW_KEY_D);
 
         // Handle the periperals input
         if (mouse_left == GLFW_PRESS) {
@@ -245,9 +252,17 @@ int main_c()
             else if (key_s == GLFW_PRESS) {
                 came.setCameraMoveBackward(true);
             }
+            else if (key_a == GLFW_PRESS) {
+                came.setCameraMoveLeft(true);
+            }
+            else if (key_d == GLFW_PRESS) {
+                came.setCameraMoveRight(true);
+            }
             else {
                 came.setCameraMoveForward(false);
                 came.setCameraMoveBackward(false);
+                came.setCameraMoveLeft(false);
+                came.setCameraMoveRight(false);
             }
             //came.cameraMovement(xpos, ypos);
             if (xpos > left_window_width && ypos < (height - bottom_window_height)) {

@@ -15,6 +15,12 @@ void camera::setCameraMoveForward(bool value) {
 void camera::setCameraMoveBackward(bool value) {
     cameraMoveBackward = value;
 }
+void camera::setCameraMoveRight(bool value) {
+    cameraMoveRight = value;
+}
+void camera::setCameraMoveLeft(bool value) {
+    cameraMoveLeft = value;
+}
 
 // Set Camera position manual
 void camera::setCameraPos(float PosX, float PosY, float PosZ,
@@ -153,6 +159,18 @@ void camera::cameraFpsRotation(float xx, double xpos, double ypos) {
         bufferCameraPosZ = 0.0f;
 
         //std::cout << "camera moved forward" << std::endl;
+    }
+    else if (cameraCanMove == true && cameraMoveLeft == true) {
+        cam[1] = cam[1] + camMove;
+        bufferCameraPosX = 0.0f;
+        bufferCameraPosY =  + camMove;
+        bufferCameraPosZ = 0.0f;
+    }
+    else if (cameraCanMove == true && cameraMoveRight == true) {
+        cam[1] = cam[1] - camMove;
+        bufferCameraPosX = 0.0f;
+        bufferCameraPosY = - camMove;
+        bufferCameraPosZ = 0.0f;
     }
     else if (cameraCanMove == true && cameraMoveBackward == true) {
         cam[0] = cam[0] - camMove;
